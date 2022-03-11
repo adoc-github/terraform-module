@@ -21,6 +21,7 @@ resource "azurerm_storage_account" "default" {
   location                 = var.LOCATION
   account_tier             = var.ACCOUNT_TIER
   account_replication_type = var.ACCOUNT_REPLICATION
+  depends_on = [ azurerm_resource_group.rg ]
 }
 
 resource "azurerm_storage_container" "default" {
