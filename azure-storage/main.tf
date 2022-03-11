@@ -9,12 +9,19 @@ terraform {
 provider azurerm {
   features {}
 }
+
+resource "azurerm_resource_group" "rg" {
+  name      = var.RESOURCE_GROUP_NAME
+  location  = var.LOCATION
+}
+
 resource "azurerm_storage_account" "default" {
   name                     = var.STORAGE_ACCOUNT_NAME
   resource_group_name      = var.RESOURCE_GROUP_NAME
   location                 = var.LOCATION
   account_tier             = var.ACCOUNT_TIER
   account_replication_type = var.ACCOUNT_REPLICATION
+  depends_on = [ azurerm_resource_group.rg ]
 }
 
 resource "azurerm_storage_container" "default" {

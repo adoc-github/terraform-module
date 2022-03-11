@@ -1,6 +1,8 @@
 variable "STORAGE_ACCOUNT_NAME" {
 }
 variable "RESOURCE_GROUP_NAME" {
+    type = string
+    default = "adoc-resource-group-demo"
 }
 variable "LOCATION" {
 }
